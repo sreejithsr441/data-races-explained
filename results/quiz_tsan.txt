@@ -1,0 +1,14 @@
+### ./quiz_tsan a
+quiz a: score 10
+### ./quiz_tsan b
+quiz b: score 12
+### ./quiz_tsan c
+WARNING: ThreadSanitizer: data race (pid=357)
+    #0 t2 src/quiz.c:20 (quiz_tsan+0x1470) (BuildId: a78449a32265bacd1b357e06d628a7b7fa96feae)
+    #0 t1 src/quiz.c:13 (quiz_tsan+0x13a8) (BuildId: a78449a32265bacd1b357e06d628a7b7fa96feae)
+  Location is global 'score' of size 8 at 0x55e193a35010 (quiz_tsan+0x4010)
+    #1 main src/quiz.c:25 (quiz_tsan+0x150c) (BuildId: a78449a32265bacd1b357e06d628a7b7fa96feae)
+    #1 main src/quiz.c:25 (quiz_tsan+0x14ee) (BuildId: a78449a32265bacd1b357e06d628a7b7fa96feae)
+SUMMARY: ThreadSanitizer: data race src/quiz.c:20 in t2
+ThreadSanitizer: reported 1 warnings
+quiz c: score 11

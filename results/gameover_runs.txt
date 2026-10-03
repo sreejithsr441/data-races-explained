@@ -1,0 +1,7 @@
+### gcc -O0
+A: flipped the sign to game over
+B: saw game over, going home
+done
+exit 0
+### gcc -O2
+exit 124 (124 = killed by timeout after 3 s)

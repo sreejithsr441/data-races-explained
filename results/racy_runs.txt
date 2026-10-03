@@ -1,0 +1,11 @@
+machine: 2 cores, Model name: Intel(R) Xeon(R) Processor @ 2.80GHz, gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, -O0
+1193016 4.8ms
+1272763 4.9ms
+1418822 5.0ms
+1165176 4.7ms
+1193506 5.0ms
+1427717 5.2ms
+1240639 5.0ms
+1405095 7.5ms
+1743260 5.0ms
+1779400 7.6ms

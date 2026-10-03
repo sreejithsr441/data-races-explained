@@ -1,0 +1,42 @@
+==================
+WARNING: ThreadSanitizer: data race (pid=397)
+  Read of size 8 at 0x5572397b3090 by thread T1:
+    #0 work src/race.c:11 (race_tsan+0x13be) (BuildId: c235cb0f3cfaa81448cf3e815503040aa72bba90)
+
+  Previous write of size 8 at 0x5572397b3090 by thread T2:
+    #0 work src/race.c:11 (race_tsan+0x13d1) (BuildId: c235cb0f3cfaa81448cf3e815503040aa72bba90)
+
+  Location is global 'counter' of size 8 at 0x5572397b3090 (race_tsan+0x4090)
+
+  Thread T1 (tid=399, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 main src/race.c:20 (race_tsan+0x155a) (BuildId: c235cb0f3cfaa81448cf3e815503040aa72bba90)
+
+  Thread T2 (tid=400, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 main src/race.c:20 (race_tsan+0x1574) (BuildId: c235cb0f3cfaa81448cf3e815503040aa72bba90)
+
+SUMMARY: ThreadSanitizer: data race src/race.c:11 in work
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=397)
+  Write of size 8 at 0x5572397b3090 by thread T1:
+    #0 work src/race.c:11 (race_tsan+0x13d1) (BuildId: c235cb0f3cfaa81448cf3e815503040aa72bba90)
+
+  Previous write of size 8 at 0x5572397b3090 by thread T2:
+    #0 work src/race.c:11 (race_tsan+0x13d1) (BuildId: c235cb0f3cfaa81448cf3e815503040aa72bba90)
+
+  Location is global 'counter' of size 8 at 0x5572397b3090 (race_tsan+0x4090)
+
+  Thread T1 (tid=399, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 main src/race.c:20 (race_tsan+0x155a) (BuildId: c235cb0f3cfaa81448cf3e815503040aa72bba90)
+
+  Thread T2 (tid=400, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 main src/race.c:20 (race_tsan+0x1574) (BuildId: c235cb0f3cfaa81448cf3e815503040aa72bba90)
+
+SUMMARY: ThreadSanitizer: data race src/race.c:11 in work
+==================
+ThreadSanitizer: reported 2 warnings
+2000000 405.9ms
